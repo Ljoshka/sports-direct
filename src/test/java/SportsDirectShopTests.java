@@ -11,7 +11,7 @@ import java.util.List;
 
 public class SportsDirectShopTests {
     private final By ACCEPT_COOKIES_BTN = By.id("onetrust-accept-btn-handler");
-    private final By MENU_ITEM = By.xpath(".//li[contains(@class, 'mmHasChild root AppTab')]");
+    private final By MENU_ITEM = By.xpath(".//div[@data-testid = 'slides']/div");
     private final String SECTION = "Kids";
 
     @Test
