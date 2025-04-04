@@ -14,12 +14,15 @@ public class CatalogPage {
     }
 
     public void setPriceFilter(double priceFrom, double priceTo) {
-        baseFunc.typeText(PRICE_FROM, String.valueOf(priceFrom));
+        String priceFromAsText = String.valueOf(priceFrom);
+        String priceToAsText = String.valueOf(priceTo);
+
+        baseFunc.typeTextInCustomField(PRICE_FROM, priceFromAsText);
         baseFunc.pressEnter(PRICE_FROM);
 
         baseFunc.waitForText(FILTER_VALUE, "Value_82");
 
-        baseFunc.typeText(PRICE_TO, String.valueOf(priceTo));
+        baseFunc.typeTextInCustomField(PRICE_TO, priceToAsText);
         baseFunc.pressEnter(PRICE_TO);
 
         baseFunc.waitForText(FILTER_VALUE, "priceValue");
