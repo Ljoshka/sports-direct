@@ -57,6 +57,10 @@ public class BaseFunc {
         return browser.findElements(locator);
     }
 
+    public List<WebElement> findElements(WebElement parent, By locator) {
+        return wait.until(ExpectedConditions.visibilityOf(parent)).findElements(locator);
+    }
+
     public void scrollToElement(WebElement we) {
 //        JavascriptExecutor executor = (JavascriptExecutor) browser;
         executor.executeScript("arguments[0].scrollIntoView(true);", we);
@@ -65,6 +69,10 @@ public class BaseFunc {
 
     public void waitForText(By locator, String text) {
         wait.until(ExpectedConditions.textToBe(locator, text));
+    }
+
+    public void waitForContainingText(By locator, String text) {
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(locator, text));
     }
 
     public void typeText(By locator, String text) {
@@ -85,5 +93,9 @@ public class BaseFunc {
 
     public void pressEnter(By locator) {
         findElement(locator).sendKeys(Keys.ENTER);
+    }
+
+    public String getText(WebElement parent, By locator) {
+        return wait.until(ExpectedConditions.visibilityOf(parent)).findElement(locator).getText();
     }
 }

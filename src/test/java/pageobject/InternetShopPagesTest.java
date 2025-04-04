@@ -1,5 +1,6 @@
 package pageobject;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -23,5 +24,9 @@ public class InternetShopPagesTest {
 
         CatalogPage catalogPage = new CatalogPage(baseFunc);
         catalogPage.setPriceFilter(25.0, 35);
+
+        for (Double price: catalogPage.getAllActualPrices()) {
+            Assertions.assertTrue(price >= 25.0 && price <= 35.0, "Price mismatch");
+        }
     }
 }
